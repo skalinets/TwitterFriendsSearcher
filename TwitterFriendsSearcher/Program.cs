@@ -5,17 +5,24 @@ using System.Windows.Forms;
 
 namespace TwitterFriendsSearcher
 {
-    static class Program
+    public static class Program
     {
+        public static ITwitterService TwitterService;
+
+        public static TwitterFriendsSearcherForm MainForm { get; private set; }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main(params string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            MainForm = new TwitterFriendsSearcherForm(args.Count() > 0 ? args[0] : string.Empty);
+
+            Application.Run(MainForm);
         }
     }
 }
