@@ -14,7 +14,7 @@ namespace Test.TwitterFriendsSearcher.FollowAlgorithm
         private IMakingFriendsService makingFriendsService = MockRepository.GenerateMock<IMakingFriendsService>();
 
         [TestMethod]
-        public void should_grab_users_by_name_and_start_following_process()
+        public void should_grab_users_by_name_and_start_making_friends_process()
         {
             const string keywords = "TDD course";
             var usersForKeywords = new List<int> {1, 2, 3};
@@ -23,7 +23,7 @@ namespace Test.TwitterFriendsSearcher.FollowAlgorithm
 
             usersSearcher.Stub(x => x.Find(keywords)).Return(usersForKeywords);
 
-            increaseFollowersService.IncreaseByKeywords("TDD course");
+            increaseFollowersService.IncreaseByKeywords(keywords);
             
             makingFriendsService.AssertWasCalled(x => x.MakeFriendsWith(usersForKeywords));
         }
