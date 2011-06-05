@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using TwitterFriendsSearcher.Twitter;
+using TwitterFriendsSearcher.UI;
 
 namespace TwitterFriendsSearcher
 {

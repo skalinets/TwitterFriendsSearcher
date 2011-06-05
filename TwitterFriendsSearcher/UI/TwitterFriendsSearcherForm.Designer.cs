@@ -1,4 +1,4 @@
-﻿namespace TwitterFriendsSearcher
+﻿namespace TwitterFriendsSearcher.UI
 {
     partial class TwitterFriendsSearcherForm
     {

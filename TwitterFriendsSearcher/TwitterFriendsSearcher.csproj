@@ -46,11 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITwitterService.cs" />
-    <Compile Include="TwitterFriendsSearcherForm.cs">
+    <Compile Include="Core\IMakingFriendsService.cs" />
+    <Compile Include="FollowAlgorithm\IncreaseFollowersService.cs" />
+    <Compile Include="FollowAlgorithm\MakingFriendsService.cs" />
+    <Compile Include="Twitter\ITwitterService.cs" />
+    <Compile Include="Core\IUsersByKeywordsSearcher.cs" />
+    <Compile Include="UI\TwitterFriendsSearcherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TwitterFriendsSearcherForm.Designer.cs">
+    <Compile Include="UI\TwitterFriendsSearcherForm.Designer.cs">
       <DependentUpon>TwitterFriendsSearcherForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -64,7 +68,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TwitterFriendsSearcherForm.resx">
+    <EmbeddedResource Include="UI\TwitterFriendsSearcherForm.resx">
       <DependentUpon>TwitterFriendsSearcherForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

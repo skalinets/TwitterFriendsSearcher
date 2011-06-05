@@ -1,7 +1,9 @@
+using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TwitterFriendsSearcher;
+using TwitterFriendsSearcher.Twitter;
 
-namespace Test.TwitterFriendsSearcher
+namespace Test.TwitterFriendsSearcher.TestHelpers
 {
     public class FakeTwitterService : ITwitterService
     {
@@ -20,6 +22,16 @@ namespace Test.TwitterFriendsSearcher
             return LastTweet;
         }
 
+        public void Follow(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UnfollowAll(IEnumerable<int> usersIds)
+        {
+            throw new NotImplementedException();
+        }
+
         public void HasReceivedTweet(string testTweet)
         {
             Assert.AreEqual(testTweet, LastTweet);
@@ -28,6 +40,11 @@ namespace Test.TwitterFriendsSearcher
         public void HasBeenAskedForTheLastTweet()
         {
             Assert.IsTrue(HasBeenAskedForLastTweet);
+        }
+
+        public IEnumerable<int> Find(string keywords)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Test.TwitterFriendsSearcher.TestHelpers;
 
-namespace Test.TwitterFriendsSearcher
+namespace Test.TwitterFriendsSearcher.EndToEnd
 {
     
     [TestClass]
@@ -11,7 +12,7 @@ namespace Test.TwitterFriendsSearcher
         private FakeTwitterService twitterService = new FakeTwitterService();
 
         [TestMethod]
-        public void shouldTweetTheFetchAndDisplayTheTweet()
+        public void should_tweet_then_fetch_and_display_the_tweet()
         {
             const string testTweet = "Test tweet";
 

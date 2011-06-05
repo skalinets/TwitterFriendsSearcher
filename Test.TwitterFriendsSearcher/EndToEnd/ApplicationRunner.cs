@@ -2,27 +2,25 @@
 using System.Diagnostics;
 using System.Threading;
 using TwitterFriendsSearcher;
+using TwitterFriendsSearcher.Twitter;
 using White.Core;
 using White.Core.UIItems;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Test.TwitterFriendsSearcher
+namespace Test.TwitterFriendsSearcher.EndToEnd
 {
     public class ApplicationRunner
     {
-
-        private const string TestTweet = "TestTweet";
-        private const string User = "TestUser";
 
         private Application application;
 
         public void Tweet(ITwitterService twitterService, string tweet)
         {
-            new Thread(new ThreadStart(() =>
-                                           {
-                                               Program.TwitterService = twitterService;
-                                               Program.Main(tweet); // tweets
-                                           })).Start();
+            new Thread(() =>
+                           {
+                               Program.TwitterService = twitterService;
+                               Program.Main(tweet);
+                           }).Start();
 
             Thread.Sleep(1000);
 

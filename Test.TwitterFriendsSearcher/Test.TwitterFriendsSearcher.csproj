@@ -68,9 +68,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationRunner.cs" />
-    <Compile Include="FakeTwitterService.cs" />
-    <Compile Include="TwitterFriendsSearcherEndToEndTests.cs" />
+    <Compile Include="EndToEnd\ApplicationRunner.cs" />
+    <Compile Include="FollowAlgorithm\MakingFriendsServiceTest.cs" />
+    <Compile Include="TestHelpers\FakeTwitterService.cs" />
+    <Compile Include="FollowAlgorithm\IncreaseFollowersServiceTest.cs" />
+    <Compile Include="EndToEnd\TwitterFriendsSearcherEndToEndTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
