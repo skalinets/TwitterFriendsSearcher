@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TweetSharp;
 
 namespace TwitterFriendsSearcher.Twitter
@@ -20,12 +21,16 @@ namespace TwitterFriendsSearcher.Twitter
 
         public IEnumerable<int> Find(string keywords)
         {
-            throw new NotImplementedException();
+            var results = twitterService.Search(keywords);
+
+            var userNames = results.Statuses.Select(x => x.FromUserScreenName).Distinct();
+
+            return userNames.Select(userName => twitterService.GetUserProfileFor(userName).Id);
         }
 
         public void Tweet(string tweet)
         {
-            throw new NotImplementedException();
+            twitterService.SendTweet(tweet);
         }
 
         public string GetLastTweet()

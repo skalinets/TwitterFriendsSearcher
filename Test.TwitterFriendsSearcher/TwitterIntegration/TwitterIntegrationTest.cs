@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TwitterFriendsSearcher.Twitter;
 
@@ -27,6 +28,16 @@ namespace Test.TwitterFriendsSearcher.TwitterIntegration
             twitterFriendsService.Follow(friendId);
 
             Assert.IsTrue(twitterFriendsService.GetFriends(TwitterAccess.UserId).Contains(friendId));
+        }
+
+        [TestMethod]
+        public void should_return_authors_of_tweets_that_match_keywords_when_searching_for_users_by_keywords()
+        {
+            var twitterFriendsService = new TwitterFriendsService(appToken, userToken);
+
+            var users = twitterFriendsService.Find("tdd course");
+
+            Assert.IsTrue(users.Count() > 0);
         }
 
         private int GetRandomFriendOf(TwitterFriendsService twitterFriendsService, int userId)
