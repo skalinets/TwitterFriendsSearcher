@@ -24,7 +24,8 @@ namespace Test.TwitterFriendsSearcher.FollowAlgorithm
             twitterService.AssertWasCalled(x => x.Follow(1));
             twitterService.AssertWasCalled(x => x.Follow(2));
 
-            twitterService.AssertWasCalled(x => x.UnfollowAll(users));
+            twitterService.AssertWasCalled(x => x.Unfollow(1));
+            twitterService.AssertWasCalled(x => x.Unfollow(2));
         }
 
     }

@@ -9,6 +9,7 @@ namespace TwitterFriendsSearcher.Twitter
         void Tweet(string tweet);
         string GetLastTweet();
         void Follow(int userId);
-        void UnfollowAll(IEnumerable<int> usersIds);
+        void Unfollow(int userId);
+        IEnumerable<int> GetFriends(int userId);
     }
 }

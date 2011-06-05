@@ -34,6 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hammock">
+      <HintPath>..\packages\Hammock.1.2.4\lib\net40\Hammock.dll</HintPath>
+    </Reference>
+    <Reference Include="Hammock.ClientProfile">
+      <HintPath>..\packages\TweetSharp.2.0.7\lib\4.0\Hammock.ClientProfile.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\TweetSharp.2.0.7\lib\4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,13 +53,19 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TweetSharp">
+      <HintPath>..\packages\TweetSharp.2.0.7\lib\4.0\TweetSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\IMakingFriendsService.cs" />
     <Compile Include="FollowAlgorithm\IncreaseFollowersService.cs" />
     <Compile Include="FollowAlgorithm\MakingFriendsService.cs" />
+    <Compile Include="Twitter\ApplicationToken.cs" />
+    <Compile Include="Twitter\UserToken.cs" />
     <Compile Include="Twitter\ITwitterService.cs" />
     <Compile Include="Core\IUsersByKeywordsSearcher.cs" />
+    <Compile Include="Twitter\TwitterFriendsService.cs" />
     <Compile Include="UI\TwitterFriendsSearcherForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +86,7 @@
     <EmbeddedResource Include="UI\TwitterFriendsSearcherForm.resx">
       <DependentUpon>TwitterFriendsSearcherForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -27,7 +27,17 @@ namespace Test.TwitterFriendsSearcher.TestHelpers
             throw new NotImplementedException();
         }
 
-        public void UnfollowAll(IEnumerable<int> usersIds)
+        public void Unfollow(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetUserId(string screenName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<int> GetFriends(int userId)
         {
             throw new NotImplementedException();
         }

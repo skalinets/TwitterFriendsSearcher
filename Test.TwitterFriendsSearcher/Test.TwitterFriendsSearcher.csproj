@@ -74,6 +74,8 @@
     <Compile Include="FollowAlgorithm\IncreaseFollowersServiceTest.cs" />
     <Compile Include="EndToEnd\TwitterFriendsSearcherEndToEndTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwitterIntegration\TwitterAccessToken.cs" />
+    <Compile Include="TwitterIntegration\TwitterIntegrationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -84,9 +86,7 @@
       <Name>TwitterFriendsSearcher</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TwitterIntegration\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

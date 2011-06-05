@@ -17,7 +17,7 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
         public void StartMakingFriends(List<int> users)
         {
             users.ForEach(TwitterService.Follow);
-            TwitterService.UnfollowAll(users);
+            users.ForEach(TwitterService.Unfollow);
         }
     }
 }
