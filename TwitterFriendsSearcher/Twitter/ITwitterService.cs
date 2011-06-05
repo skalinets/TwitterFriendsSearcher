@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
-using TwitterFriendsSearcher.Core;
-using TwitterFriendsSearcher.FollowAlgorithm;
 
 namespace TwitterFriendsSearcher.Twitter
 {
-    public interface ITwitterService : IUsersByKeywordsSearcher
+    public interface ITwitterService
     {
         void Tweet(string tweet);
         string GetLastTweet();
         void Follow(int userId);
         void Unfollow(int userId);
         IEnumerable<int> GetFriends(int userId);
+        IEnumerable<int> FindByKeywords(string keywords);
     }
 }

@@ -19,7 +19,7 @@ namespace TwitterFriendsSearcher.Twitter
             twitterService.AuthenticateWith(userToken.AccessToken, userToken.AccessTokenSecret);
         }
 
-        public IEnumerable<int> Find(string keywords)
+        public IEnumerable<int> FindByKeywords(string keywords)
         {
             var results = twitterService.Search(keywords);
 

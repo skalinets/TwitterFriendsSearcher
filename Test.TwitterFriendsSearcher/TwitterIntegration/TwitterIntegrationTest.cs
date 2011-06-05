@@ -35,7 +35,7 @@ namespace Test.TwitterFriendsSearcher.TwitterIntegration
         {
             var twitterFriendsService = new TwitterFriendsService(appToken, userToken);
 
-            var users = twitterFriendsService.Find("tdd course");
+            var users = twitterFriendsService.FindByKeywords("tdd course");
 
             Assert.IsTrue(users.Count() > 0);
         }

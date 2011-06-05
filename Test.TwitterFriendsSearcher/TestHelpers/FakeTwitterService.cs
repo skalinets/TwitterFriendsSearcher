@@ -42,6 +42,11 @@ namespace Test.TwitterFriendsSearcher.TestHelpers
             throw new NotImplementedException();
         }
 
+        public IEnumerable<int> FindByKeywords(string keywords)
+        {
+            throw new NotImplementedException();
+        }
+
         public void HasReceivedTweet(string testTweet)
         {
             Assert.AreEqual(testTweet, LastTweet);
