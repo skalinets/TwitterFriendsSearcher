@@ -7,17 +7,17 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
     public class MakingFriendsService
     {
         
-        public ITwitterService TwitterService { get; private set; }
+        public ITwitterWrapper TwitterWrapper { get; private set; }
 
-        public MakingFriendsService(ITwitterService twitterService)
+        public MakingFriendsService(ITwitterWrapper twitterWrapper)
         {
-            TwitterService = twitterService;
+            TwitterWrapper = twitterWrapper;
         }
 
         public void StartMakingFriends(List<int> users)
         {
-            users.ForEach(TwitterService.Follow);
-            users.ForEach(TwitterService.Unfollow);
+            users.ForEach(TwitterWrapper.Follow);
+            users.ForEach(TwitterWrapper.Unfollow);
         }
     }
 }

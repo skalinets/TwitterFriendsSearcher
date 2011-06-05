@@ -10,21 +10,28 @@ namespace Test.TwitterFriendsSearcher.FollowAlgorithm
     public class UsersByKeywordsSearcherTest
     {
 
-        private ITwitterService twitterService = MockRepository.GenerateMock<ITwitterService>();
+        private ITwitterWrapper twitterWrapper = MockRepository.GenerateMock<ITwitterWrapper>();
 
         [TestMethod]
         public void should_redirect_search_request_to_twitter_service()
         {
-            var searcher = new UsersByKeywordsSearcher(twitterService);
+            var searcher = new UsersByKeywordsSearcher(twitterWrapper);
 
             const string keywords = "keywords";
             var usersFound = new List<int> {1, 2};
 
-            twitterService.Stub(x => x.FindByKeywords(keywords)).Return(usersFound);
+            twitterWrapper.Stub(x => x.FindByKeywords(keywords)).Return(usersFound);
 
             var result = searcher.Find(keywords);
 
             Assert.AreEqual(usersFound, result);
+        }
+
+        [TestMethod]
+        public void should_search_for_all_keywords()
+        {
+            var searcher = new UsersByKeywordsSearcher(twitterWrapper);
+
         }
 
     }

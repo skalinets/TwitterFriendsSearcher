@@ -64,9 +64,9 @@
     <Compile Include="FollowAlgorithm\UsersByKeywordsSearcher.cs" />
     <Compile Include="Twitter\ApplicationToken.cs" />
     <Compile Include="Twitter\UserToken.cs" />
-    <Compile Include="Twitter\ITwitterService.cs" />
+    <Compile Include="Twitter\ITwitterWrapper.cs" />
     <Compile Include="Core\IUsersByKeywordsSearcher.cs" />
-    <Compile Include="Twitter\TwitterFriendsService.cs" />
+    <Compile Include="Twitter\TwitterWrapper.cs" />
     <Compile Include="UI\TwitterFriendsSearcherForm.cs">
       <SubType>Form</SubType>
     </Compile>

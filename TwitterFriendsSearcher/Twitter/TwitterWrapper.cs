@@ -5,13 +5,13 @@ using TweetSharp;
 
 namespace TwitterFriendsSearcher.Twitter
 {
-    public class TwitterFriendsService : ITwitterService
+    public class TwitterWrapper : ITwitterWrapper
     {
         public ApplicationToken AppToken { get; private set; }
         public UserToken UserToken { get; private set; }
         private TwitterService twitterService;
 
-        public TwitterFriendsService(ApplicationToken appToken, UserToken userToken)
+        public TwitterWrapper(ApplicationToken appToken, UserToken userToken)
         {
             AppToken = appToken;
             UserToken = userToken;

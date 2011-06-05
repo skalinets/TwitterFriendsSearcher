@@ -10,22 +10,22 @@ namespace Test.TwitterFriendsSearcher.FollowAlgorithm
     public class MakingFriendsServiceTest
     {
 
-        private ITwitterService twitterService = MockRepository.GenerateMock<ITwitterService>();
+        private ITwitterWrapper twitterWrapper = MockRepository.GenerateMock<ITwitterWrapper>();
 
         [TestMethod]
         public void should_follow_each_user_and_unfollow_them_when_making_friends()
         {
             var users = new List<int> { 1, 2 };
 
-            var makingFriendsService = new MakingFriendsService(twitterService);
+            var makingFriendsService = new MakingFriendsService(twitterWrapper);
 
             makingFriendsService.StartMakingFriends(users);
 
-            twitterService.AssertWasCalled(x => x.Follow(1));
-            twitterService.AssertWasCalled(x => x.Follow(2));
+            twitterWrapper.AssertWasCalled(x => x.Follow(1));
+            twitterWrapper.AssertWasCalled(x => x.Follow(2));
 
-            twitterService.AssertWasCalled(x => x.Unfollow(1));
-            twitterService.AssertWasCalled(x => x.Unfollow(2));
+            twitterWrapper.AssertWasCalled(x => x.Unfollow(1));
+            twitterWrapper.AssertWasCalled(x => x.Unfollow(2));
         }
 
     }

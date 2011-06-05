@@ -2,7 +2,7 @@
 
 namespace TwitterFriendsSearcher.Twitter
 {
-    public interface ITwitterService
+    public interface ITwitterWrapper
     {
         void Tweet(string tweet);
         string GetLastTweet();

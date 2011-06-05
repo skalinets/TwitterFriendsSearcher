@@ -17,7 +17,7 @@ namespace Test.TwitterFriendsSearcher.TwitterIntegration
         [TestMethod]
         public void should_follow_and_unfollow_user_when_asked()
         {
-            var twitterFriendsService = new TwitterFriendsService(appToken, userToken);
+            var twitterFriendsService = new TwitterWrapper(appToken, userToken);
 
             var friendId = GetRandomFriendOf(twitterFriendsService, TwitterAccess.UserId);
 
@@ -33,16 +33,16 @@ namespace Test.TwitterFriendsSearcher.TwitterIntegration
         [TestMethod]
         public void should_return_authors_of_tweets_that_match_keywords_when_searching_for_users_by_keywords()
         {
-            var twitterFriendsService = new TwitterFriendsService(appToken, userToken);
+            var twitterFriendsService = new TwitterWrapper(appToken, userToken);
 
             var users = twitterFriendsService.FindByKeywords("tdd course");
 
             Assert.IsTrue(users.Count() > 0);
         }
 
-        private int GetRandomFriendOf(TwitterFriendsService twitterFriendsService, int userId)
+        private int GetRandomFriendOf(TwitterWrapper twitterWrapper, int userId)
         {
-            var friendsIds = twitterFriendsService.GetFriends(userId);
+            var friendsIds = twitterWrapper.GetFriends(userId);
 
             return friendsIds.First();
         }

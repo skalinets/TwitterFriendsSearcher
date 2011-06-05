@@ -5,7 +5,7 @@ using TwitterFriendsSearcher.Twitter;
 
 namespace Test.TwitterFriendsSearcher.TestHelpers
 {
-    public class FakeTwitterService : ITwitterService
+    public class FakeTwitterWrapper : ITwitterWrapper
     {
 
         public string LastTweet { get; private set; }
