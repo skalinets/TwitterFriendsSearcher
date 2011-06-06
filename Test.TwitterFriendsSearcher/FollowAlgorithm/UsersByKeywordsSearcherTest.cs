@@ -27,12 +27,5 @@ namespace Test.TwitterFriendsSearcher.FollowAlgorithm
             Assert.AreEqual(usersFound, result);
         }
 
-        [TestMethod]
-        public void should_search_for_all_keywords()
-        {
-            var searcher = new UsersByKeywordsSearcher(twitterWrapper);
-
-        }
-
     }
 }
