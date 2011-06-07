@@ -36,13 +36,12 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
         public void Find(params string[] keywords)
         {
             foundUsers = new List<int>();
+            asychronousSearchesInProgress = keywords.Length;
             keywords.ToList().ForEach(x => StartSearching(TwitterWrapper, x));
         }
 
         private void StartSearching(ITwitterWrapper twitterWrapper, string keywords)
         {
-            asychronousSearchesInProgress++;
-
             SearchExecutor.Execute(() => Search(twitterWrapper, keywords));
         }
 
@@ -50,10 +49,14 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
         {
             var searchResult = twitterWrapper.FindByKeywords(keywords);
 
-            foundUsers = foundUsers.Union(searchResult);
+            lock (this)
+            {
 
-            asychronousSearchesInProgress--;
+                Interlocked.Decrement(ref asychronousSearchesInProgress);
 
+                foundUsers = foundUsers.Union(searchResult);
+
+            }
             if(asychronousSearchesInProgress == 0)
                 OnSearchCompleted(new SearchCompletedEventArgs(foundUsers));
         }

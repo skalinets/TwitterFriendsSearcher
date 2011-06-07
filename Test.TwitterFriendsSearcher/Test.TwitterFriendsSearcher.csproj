@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="EndToEnd\ApplicationRunner.cs" />
     <Compile Include="FollowAlgorithm\MakingFriendsServiceTest.cs" />
+    <Compile Include="FollowAlgorithm\UsersByKeywordsSearcherStressTests.cs" />
     <Compile Include="FollowAlgorithm\UsersByKeywordsSearcherTest.cs" />
     <Compile Include="TestHelpers\FakeTwitterWrapper.cs" />
     <Compile Include="FollowAlgorithm\IncreaseFollowersServiceTest.cs" />

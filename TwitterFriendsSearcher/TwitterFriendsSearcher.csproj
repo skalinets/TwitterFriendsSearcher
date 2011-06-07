@@ -62,6 +62,7 @@
     <Compile Include="FollowAlgorithm\IncreaseFollowersService.cs" />
     <Compile Include="FollowAlgorithm\ISearchExecutor.cs" />
     <Compile Include="FollowAlgorithm\MakingFriendsService.cs" />
+    <Compile Include="FollowAlgorithm\MultipleThreadsExecutor.cs" />
     <Compile Include="FollowAlgorithm\SearchCompletedEventArgs.cs" />
     <Compile Include="FollowAlgorithm\UsersByKeywordsSearcher.cs" />
     <Compile Include="Twitter\ApplicationToken.cs" />
