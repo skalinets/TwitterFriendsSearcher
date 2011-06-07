@@ -75,6 +75,7 @@
     <Compile Include="FollowAlgorithm\IncreaseFollowersServiceTest.cs" />
     <Compile Include="EndToEnd\TwitterFriendsSearcherEndToEndTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers\SynchronousExecutor.cs" />
     <Compile Include="TwitterIntegration\TwitterAccessToken.cs" />
     <Compile Include="TwitterIntegration\TwitterIntegrationTest.cs" />
   </ItemGroup>

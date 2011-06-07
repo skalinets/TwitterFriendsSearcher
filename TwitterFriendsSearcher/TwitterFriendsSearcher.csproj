@@ -60,7 +60,9 @@
   <ItemGroup>
     <Compile Include="Core\IMakingFriendsService.cs" />
     <Compile Include="FollowAlgorithm\IncreaseFollowersService.cs" />
+    <Compile Include="FollowAlgorithm\ISearchExecutor.cs" />
     <Compile Include="FollowAlgorithm\MakingFriendsService.cs" />
+    <Compile Include="FollowAlgorithm\SearchCompletedEventArgs.cs" />
     <Compile Include="FollowAlgorithm\UsersByKeywordsSearcher.cs" />
     <Compile Include="Twitter\ApplicationToken.cs" />
     <Compile Include="Twitter\UserToken.cs" />
