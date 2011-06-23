@@ -10,14 +10,17 @@ namespace Test.TwitterFriendsSearcher.TwitterIntegration
     [TestClass]
     public class TwitterIntegrationTest
     {
+        private readonly TwitterFriendsServiceParams twitterFriendsServiceParams;
 
-        private ApplicationToken appToken = new ApplicationToken(TwitterAccess.ConsumerKey, TwitterAccess.ConsumerSecret);
-        private UserToken userToken = new UserToken(TwitterAccess.AccessToken, TwitterAccess.AccessTokenSecret);
+        public TwitterIntegrationTest()
+        {
+            twitterFriendsServiceParams = TwitterFriendsServiceParams.GetTestParams();
+        }
 
         [TestMethod]
         public void should_follow_and_unfollow_user_when_asked()
         {
-            var twitterFriendsService = new TwitterWrapper(appToken, userToken);
+            var twitterFriendsService = new TwitterFriendsService(twitterFriendsServiceParams);
 
             var friendId = GetRandomFriendOf(twitterFriendsService, TwitterAccess.UserId);
 
@@ -33,16 +36,18 @@ namespace Test.TwitterFriendsSearcher.TwitterIntegration
         [TestMethod]
         public void should_return_authors_of_tweets_that_match_keywords_when_searching_for_users_by_keywords()
         {
-            var twitterFriendsService = new TwitterWrapper(appToken, userToken);
+            var twitterFriendsService = new TwitterFriendsService(twitterFriendsServiceParams);
 
             var users = twitterFriendsService.FindByKeywords("tdd course");
+
+//            users.ToList().ForEach(Console.WriteLine);
 
             Assert.IsTrue(users.Count() > 0);
         }
 
-        private int GetRandomFriendOf(TwitterWrapper twitterWrapper, int userId)
+        private int GetRandomFriendOf(TwitterFriendsService twitterFriendsService, int userId)
         {
-            var friendsIds = twitterWrapper.GetFriends(userId);
+            var friendsIds = twitterFriendsService.GetFriends(userId);
 
             return friendsIds.First();
         }

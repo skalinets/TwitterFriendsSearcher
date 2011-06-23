@@ -5,21 +5,17 @@ using TweetSharp;
 
 namespace TwitterFriendsSearcher.Twitter
 {
-    public class TwitterWrapper : ITwitterWrapper
+    public class TwitterFriendsService : ITwitterWrapper
     {
-        public ApplicationToken AppToken { get; private set; }
-        public UserToken UserToken { get; private set; }
-        private TwitterService twitterService;
+        private readonly TwitterService twitterService;
 
-        public TwitterWrapper(ApplicationToken appToken, UserToken userToken)
+        public TwitterFriendsService(TwitterFriendsServiceParams twitterFriendsServiceParams)
         {
-            AppToken = appToken;
-            UserToken = userToken;
-            twitterService = new TwitterService(appToken.ConsumerKey, appToken.ConsumerSecret);
-            twitterService.AuthenticateWith(userToken.AccessToken, userToken.AccessTokenSecret);
+            twitterService = new TwitterService(twitterFriendsServiceParams.ConsumerKey, twitterFriendsServiceParams.ConsumerSecret);
+            twitterService.AuthenticateWith(twitterFriendsServiceParams.AccessToken, twitterFriendsServiceParams.AccessTokenSecret);
         }
 
-        public IEnumerable<int> FindByKeywords(string keywords)
+        public virtual IEnumerable<int> FindByKeywords(string keywords)
         {
             var results = twitterService.Search(keywords);
 

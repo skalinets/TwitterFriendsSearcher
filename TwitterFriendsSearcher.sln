@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterFriendsSearcher", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.TwitterFriendsSearcher", "Test.TwitterFriendsSearcher\Test.TwitterFriendsSearcher.csproj", "{79CBC7FE-0833-4E97-A09C-EF698D1EA079}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfClient", "WpfClient\WpfClient.csproj", "{FD995142-90F9-44DA-BF0A-03465B0842BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{79CBC7FE-0833-4E97-A09C-EF698D1EA079}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{79CBC7FE-0833-4E97-A09C-EF698D1EA079}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{79CBC7FE-0833-4E97-A09C-EF698D1EA079}.Release|x86.ActiveCfg = Release|Any CPU
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Debug|x86.ActiveCfg = Debug|x86
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Debug|x86.Build.0 = Debug|x86
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Release|Any CPU.ActiveCfg = Release|x86
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Release|Mixed Platforms.Build.0 = Release|x86
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Release|x86.ActiveCfg = Release|x86
+		{FD995142-90F9-44DA-BF0A-03465B0842BA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
