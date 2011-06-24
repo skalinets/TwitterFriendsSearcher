@@ -17,15 +17,26 @@ namespace WpfClient
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            var container = GetContainer();
+            var mainWindow = container.Resolve<MainWindow>();
+            mainWindow.DataContext = container.Resolve<MainWindowViewModel>();
+            mainWindow.Show();
+        }
+
+        private IContainer GetContainer()
+        {
+            ContainerBuilder containerBuilder = GetContainerBuilder();
+            return containerBuilder.Build();
+        }
+
+        private ContainerBuilder GetContainerBuilder()
+        {
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<MainWindowViewModel>();
             containerBuilder.RegisterType<TwitterFriendsService>().As<ITwitterWrapper>();
-            IContainer container = containerBuilder.Build();
-            var mainWindow = container.Resolve<MainWindow>();
-            mainWindow.DataContext = container.Resolve<MainWindowViewModel>();
-            mainWindow.Show();
-
+            containerBuilder.RegisterInstance(TwitterFriendsServiceParams.GetTestParams());
+            return containerBuilder;
         }
     }
 }

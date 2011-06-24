@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:t="clr-namespace:WpfClient"
         
-        Title="MainWindow" Height="379" Width="524" DataContext="t:MainWindowViewModel">
+        Title="MainWindow" Height="379" Width="524" >
+    <Window.DataContext>
+        <t:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-        <Button Content="Button" Height="23" HorizontalAlignment="Right" Margin="0,12,12,0" Name="button1" VerticalAlignment="Top" Width="75" />
-        <ListBox Margin="10,43,12,12" Name="listBox1" />
-        <TextBox Height="23" Margin="12,12,93,0" Name="textBox1" VerticalAlignment="Top" />
+        <Button Content="Button" Height="23" HorizontalAlignment="Right" Margin="0,12,12,0" Name="button1" VerticalAlignment="Top" Width="75" Command="{Binding Path=FindUsers}" />
+        <ListBox Margin="10,43,12,12" Name="listBox1" ItemsSource="{Binding Path=Users}" />
+        <TextBox Height="23" Margin="12,12,93,0" Name="textBox1" VerticalAlignment="Top" Text="{Binding Path=SearchString}" />
     </Grid>
 </Window>

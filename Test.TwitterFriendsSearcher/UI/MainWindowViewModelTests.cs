@@ -1,4 +1,5 @@
-﻿using Ploeh.AutoFixture.Xunit;
+﻿using System.Linq;
+using Ploeh.AutoFixture.Xunit;
 using Rhino.Mocks;
 using TwitterFriendsSearcher.Twitter;
 using WpfClient;
@@ -15,10 +16,10 @@ namespace Test.TwitterFriendsSearcher.UI
             var twitterFriendsService = MockRepository.GenerateStub<ITwitterWrapper>();
             twitterFriendsService.Stub(_ => _.FindByKeywords(searchString)).Return(expectedUsers);
             var viewModel = new MainWindowViewModel(twitterFriendsService);
+            viewModel.SearchString = searchString;
+            viewModel.FindUsers();
 
-            viewModel.FindUsers(searchString);
-
-            Assert.Equal(expectedUsers, viewModel.Users);
+            Assert.Equal(expectedUsers, viewModel.Users.ToArray());
         }
     }
 }

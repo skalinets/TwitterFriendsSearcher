@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using TwitterFriendsSearcher.Twitter;
 
 namespace WpfClient
@@ -6,21 +7,33 @@ namespace WpfClient
     public class MainWindowViewModel
     {
         private readonly ITwitterWrapper twitterFriendsService;
-        private IEnumerable<int> users;
+        private readonly ObservableCollection<int> users = new ObservableCollection<int>();
+        private string searchString;
+
+        public MainWindowViewModel()
+        {
+        }
 
         public MainWindowViewModel(ITwitterWrapper twitterFriendsService)
         {
             this.twitterFriendsService = twitterFriendsService;
         }
 
-        public IEnumerable<int> Users
+        public ObservableCollection<int> Users
         {
             get { return users; }
         }
 
-        public void FindUsers(string searchString)
+        public string SearchString
         {
-            users = twitterFriendsService.FindByKeywords(searchString);
+            get { return searchString; }
+            set { searchString = value; }
+        }
+
+        public void FindUsers()
+        {
+            users.Clear();
+            twitterFriendsService.FindByKeywords(SearchString).ToList().ForEach(users.Add);
         }
     }
 }
