@@ -9,7 +9,7 @@ namespace TwitterFriendsSearcher
 {
     public static class Program
     {
-        public static ITwitterWrapper TwitterWrapper;
+        public static ITwitterFriendsService TwitterFriendsService;
 
         public static TwitterFriendsSearcherForm MainForm { get; private set; }
 

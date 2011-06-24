@@ -68,11 +68,12 @@
     <Compile Include="FollowAlgorithm\IncreaseFollowersService.cs" />
     <Compile Include="FollowAlgorithm\MakingFriendsService.cs" />
     <Compile Include="FollowAlgorithm\UsersByKeywordsSearcher.cs" />
+    <Compile Include="TwitterUserInfo.cs" />
     <Compile Include="Twitter\ApplicationToken.cs" />
     <Compile Include="Twitter\TwitterAccess.cs" />
     <Compile Include="Twitter\TwitterFriendsServiceParams.cs" />
     <Compile Include="Twitter\UserToken.cs" />
-    <Compile Include="Twitter\ITwitterWrapper.cs" />
+    <Compile Include="Twitter\ITwitterFriendsService.cs" />
     <Compile Include="Core\IUsersByKeywordsSearcher.cs" />
     <Compile Include="Twitter\TwitterFriendsService.cs" />
     <Compile Include="UI\TwitterFriendsSearcherForm.cs">

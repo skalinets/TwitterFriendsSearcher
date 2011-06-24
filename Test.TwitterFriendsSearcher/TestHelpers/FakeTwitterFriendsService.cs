@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TwitterFriendsSearcher;
 using TwitterFriendsSearcher.Twitter;
 
 namespace Test.TwitterFriendsSearcher.TestHelpers
 {
-    public class FakeTwitterWrapper : ITwitterWrapper
+    public class FakeTwitterFriendsService : ITwitterFriendsService
     {
 
         public string LastTweet { get; private set; }
@@ -42,7 +43,7 @@ namespace Test.TwitterFriendsSearcher.TestHelpers
             throw new NotImplementedException();
         }
 
-        public IEnumerable<int> FindByKeywords(string keywords)
+        public IEnumerable<TwitterUserInfo> FindUsersByKeywords(string keywords)
         {
             throw new NotImplementedException();
         }

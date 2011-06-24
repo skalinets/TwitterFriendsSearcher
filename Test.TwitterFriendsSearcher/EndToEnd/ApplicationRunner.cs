@@ -14,11 +14,11 @@ namespace Test.TwitterFriendsSearcher.EndToEnd
 
         private Application application;
 
-        public void Tweet(ITwitterWrapper twitterWrapper, string tweet)
+        public void Tweet(ITwitterFriendsService twitterFriendsService, string tweet)
         {
             new Thread(() =>
                            {
-                               Program.TwitterWrapper = twitterWrapper;
+                               Program.TwitterFriendsService = twitterFriendsService;
                                Program.Main(tweet);
                            }).Start();
 

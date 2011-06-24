@@ -34,7 +34,7 @@ namespace WpfClient
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<MainWindowViewModel>();
-            containerBuilder.RegisterType<TwitterFriendsService>().As<ITwitterWrapper>();
+            containerBuilder.RegisterType<TwitterFriendsService>().As<ITwitterFriendsService>();
             containerBuilder.RegisterInstance(TwitterFriendsServiceParams.GetTestParams());
             return containerBuilder;
         }

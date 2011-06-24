@@ -5,7 +5,7 @@ using TweetSharp;
 
 namespace TwitterFriendsSearcher.Twitter
 {
-    public class TwitterFriendsService : ITwitterWrapper
+    public class TwitterFriendsService : ITwitterFriendsService
     {
         private readonly TwitterService twitterService;
 
@@ -15,13 +15,13 @@ namespace TwitterFriendsSearcher.Twitter
             twitterService.AuthenticateWith(twitterFriendsServiceParams.AccessToken, twitterFriendsServiceParams.AccessTokenSecret);
         }
 
-        public virtual IEnumerable<int> FindByKeywords(string keywords)
+        public IEnumerable<TwitterUserInfo> FindUsersByKeywords(string keywords)
         {
             var results = twitterService.Search(keywords);
 
             var userNames = results.Statuses.Select(x => x.FromUserScreenName).Distinct();
 
-            return userNames.Select(userName => twitterService.GetUserProfileFor(userName).Id);
+            return userNames.Select(userName => new TwitterUserInfo {UserName = userName, ID = twitterService.GetUserProfileFor(userName).Id});
         }
 
         public void Tweet(string tweet)

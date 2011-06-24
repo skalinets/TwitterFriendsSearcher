@@ -6,16 +6,16 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
 {
     public class UsersByKeywordsSearcher
     {
-        public ITwitterWrapper TwitterWrapper { get; private set; }
+        public ITwitterFriendsService TwitterFriendsService { get; private set; }
 
-        public UsersByKeywordsSearcher(ITwitterWrapper twitterWrapper)
+        public UsersByKeywordsSearcher(ITwitterFriendsService twitterFriendsService)
         {
-            TwitterWrapper = twitterWrapper;
+            TwitterFriendsService = twitterFriendsService;
         }
 
-        public IEnumerable<int> Find(string keywords)
+        public IEnumerable<TwitterUserInfo> Find(string keywords)
         {
-            return TwitterWrapper.FindByKeywords(keywords);
+            return TwitterFriendsService.FindUsersByKeywords(keywords);
         }
     }
 }

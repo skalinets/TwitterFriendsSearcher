@@ -38,7 +38,7 @@ namespace Test.TwitterFriendsSearcher.TwitterIntegration
         {
             var twitterFriendsService = new TwitterFriendsService(twitterFriendsServiceParams);
 
-            var users = twitterFriendsService.FindByKeywords("tdd course");
+            var users = twitterFriendsService.FindUsersByKeywords("tdd course");
 
 //            users.ToList().ForEach(Console.WriteLine);
 

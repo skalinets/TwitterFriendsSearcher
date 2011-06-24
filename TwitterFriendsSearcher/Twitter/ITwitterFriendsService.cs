@@ -2,13 +2,13 @@
 
 namespace TwitterFriendsSearcher.Twitter
 {
-    public interface ITwitterWrapper
+    public interface ITwitterFriendsService
     {
         void Tweet(string tweet);
         string GetLastTweet();
         void Follow(int userId);
         void Unfollow(int userId);
         IEnumerable<int> GetFriends(int userId);
-        IEnumerable<int> FindByKeywords(string keywords);
+        IEnumerable<TwitterUserInfo> FindUsersByKeywords(string keywords);
     }
 }

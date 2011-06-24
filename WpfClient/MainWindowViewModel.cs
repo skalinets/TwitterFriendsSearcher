@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using TwitterFriendsSearcher;
 using TwitterFriendsSearcher.Twitter;
 
 namespace WpfClient
 {
     public class MainWindowViewModel
     {
-        private readonly ITwitterWrapper twitterFriendsService;
-        private readonly ObservableCollection<int> users = new ObservableCollection<int>();
+        private readonly ITwitterFriendsService twitterFriendsService;
+        private readonly ObservableCollection<TwitterUserInfo> users = new ObservableCollection<TwitterUserInfo>();
         private string searchString;
 
         public MainWindowViewModel()
@@ -17,13 +19,13 @@ namespace WpfClient
             findUsersCommand = new SimpleCommand((o) => FindUsers());
         }
 
-        public MainWindowViewModel(ITwitterWrapper twitterFriendsService)
+        public MainWindowViewModel(ITwitterFriendsService twitterFriendsService)
         {
             findUsersCommand = new SimpleCommand((o) => FindUsers());
             this.twitterFriendsService = twitterFriendsService;
         }
 
-        public ObservableCollection<int> Users
+        public IEnumerable<TwitterUserInfo> Users
         {
             get { return users; }
         }
@@ -44,7 +46,7 @@ namespace WpfClient
         private void FindUsers()
         {
             users.Clear();
-            twitterFriendsService.FindByKeywords(SearchString).ToList().ForEach(users.Add);
+            twitterFriendsService.FindUsersByKeywords(SearchString).ToList().ForEach(users.Add);
         }
     }
 

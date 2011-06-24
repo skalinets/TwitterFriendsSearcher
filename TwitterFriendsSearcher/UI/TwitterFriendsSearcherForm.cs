@@ -8,12 +8,12 @@ namespace TwitterFriendsSearcher.UI
         {
             InitializeComponent();
 
-            Program.TwitterWrapper.Tweet(tweet);
+            Program.TwitterFriendsService.Tweet(tweet);
         }
 
         public void ReadLatestTweet()
         {
-            var tweet = Program.TwitterWrapper.GetLastTweet();
+            var tweet = Program.TwitterFriendsService.GetLastTweet();
             lblLastTweet.Text = tweet;
         }
     }

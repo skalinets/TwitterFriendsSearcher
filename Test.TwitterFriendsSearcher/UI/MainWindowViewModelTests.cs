@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Ploeh.AutoFixture.Xunit;
 using Rhino.Mocks;
+using TwitterFriendsSearcher;
 using TwitterFriendsSearcher.Twitter;
 using WpfClient;
 using Xunit;
@@ -11,16 +13,29 @@ namespace Test.TwitterFriendsSearcher.UI
 {
     public class MainWindowViewModelTests
     {
-        [Theory, AutoData]
-        public void GetUsers_UserNameIsProvided_UsersIsPopulatedFromTwitterService(string searchString, int[] expectedUsers)
+        private readonly ITwitterFriendsService twitterFriendsService = MockRepository.GenerateStub<ITwitterFriendsService>();
+        private readonly MainWindowViewModel viewModel;
+
+        public MainWindowViewModelTests()
         {
-            var twitterFriendsService = MockRepository.GenerateStub<ITwitterWrapper>();
-            twitterFriendsService.Stub(_ => _.FindByKeywords(searchString)).Return(expectedUsers);
-            var viewModel = new MainWindowViewModel(twitterFriendsService);
+            viewModel = new MainWindowViewModel(twitterFriendsService) {};
+        }
+
+        [Theory, AutoData]
+        public void GetUsers_UserNameIsProvided_UsersIsPopulatedFromTwitterService(string searchString, TwitterUserInfo[] expectedUsers)
+        {
+            twitterFriendsService.Stub(_ => _.FindUsersByKeywords(searchString)).Return(expectedUsers);
             viewModel.SearchString = searchString;
-            viewModel.FindUsersCommand.Execute(null); // test
+
+            viewModel.FindUsersCommand.Execute(null); 
 
             Assert.Equal(expectedUsers, viewModel.Users.ToArray());
+        }
+
+        [Fact]
+        public void UsersCollectionIsObservalble()
+        {
+            Assert.IsType<ObservableCollection<TwitterUserInfo>>(viewModel.Users);
         }
     }
 }
