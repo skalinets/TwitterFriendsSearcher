@@ -18,7 +18,7 @@ namespace Test.TwitterFriendsSearcher.UI
             twitterFriendsService.Stub(_ => _.FindByKeywords(searchString)).Return(expectedUsers);
             var viewModel = new MainWindowViewModel(twitterFriendsService);
             viewModel.SearchString = searchString;
-            viewModel.FindUsersCommand.Execute(null);
+            viewModel.FindUsersCommand.Execute(null); // test
 
             Assert.Equal(expectedUsers, viewModel.Users.ToArray());
         }
