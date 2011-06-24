@@ -61,6 +61,7 @@
     <Reference Include="Ploeh.SemanticComparison">
       <HintPath>..\packages\AutoFixture.2.1\lib\Ploeh.SemanticComparison.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="Rhino.Mocks">
       <HintPath>..\packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
     </Reference>
