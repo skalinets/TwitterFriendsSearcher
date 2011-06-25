@@ -1,4 +1,4 @@
-namespace Test.TwitterFriendsSearcher.TwitterIntegration
+namespace TwitterFriendsSearcher.Twitter
 {
     public static class TwitterAccess
     {

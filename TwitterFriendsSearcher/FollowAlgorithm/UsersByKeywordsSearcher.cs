@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using TwitterFriendsSearcher.Core;
 using TwitterFriendsSearcher.Twitter;
 
 namespace TwitterFriendsSearcher.FollowAlgorithm
 {
-    public class UsersByKeywordsSearcher
+    public class UsersByKeywordsSearcher : IUsersByKeywordsSearcher
     {
         public ITwitterWrapper TwitterWrapper { get; private set; }
         public ISearchExecutor SearchExecutor { get; private set; }
@@ -51,11 +52,8 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
 
             lock (this)
             {
-
                 Interlocked.Decrement(ref asychronousSearchesInProgress);
-
                 foundUsers = foundUsers.Union(searchResult);
-
             }
             if(asychronousSearchesInProgress == 0)
                 OnSearchCompleted(new SearchCompletedEventArgs(foundUsers));

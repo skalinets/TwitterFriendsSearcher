@@ -19,7 +19,7 @@ namespace Test.TwitterFriendsSearcher.FollowAlgorithm
 
             var makingFriendsService = new MakingFriendsService(twitterWrapper);
 
-            makingFriendsService.StartMakingFriends(users);
+            makingFriendsService.MakeFriendsWith(users);
 
             twitterWrapper.AssertWasCalled(x => x.Follow(1));
             twitterWrapper.AssertWasCalled(x => x.Follow(2));

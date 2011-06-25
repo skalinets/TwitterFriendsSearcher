@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using TwitterFriendsSearcher.Core;
 using TwitterFriendsSearcher.Twitter;
 
 namespace TwitterFriendsSearcher.FollowAlgorithm
 {
-    public class MakingFriendsService
+    public class MakingFriendsService : IMakingFriendsService
     {
         
         public ITwitterWrapper TwitterWrapper { get; private set; }
@@ -14,10 +16,10 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
             TwitterWrapper = twitterWrapper;
         }
 
-        public void StartMakingFriends(List<int> users)
+        public void MakeFriendsWith(IEnumerable<int> users)
         {
-            users.ForEach(TwitterWrapper.Follow);
-            users.ForEach(TwitterWrapper.Unfollow);
+            users.ToList().ForEach(TwitterWrapper.Follow);
+            users.ToList().ForEach(TwitterWrapper.Unfollow);
         }
     }
 }

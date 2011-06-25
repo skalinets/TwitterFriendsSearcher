@@ -11,11 +11,14 @@ namespace TwitterFriendsSearcher.Twitter
         public UserToken UserToken { get; private set; }
         private TwitterService twitterService;
 
-        public TwitterWrapper(ApplicationToken appToken, UserToken userToken)
+        public TwitterWrapper(ApplicationToken appToken)
         {
             AppToken = appToken;
-            UserToken = userToken;
-            twitterService = new TwitterService(appToken.ConsumerKey, appToken.ConsumerSecret);
+        }
+
+        public void Authenticate(UserToken userToken)
+        {
+            twitterService = new TwitterService(AppToken.ConsumerKey, AppToken.ConsumerSecret);
             twitterService.AuthenticateWith(userToken.AccessToken, userToken.AccessTokenSecret);
         }
 

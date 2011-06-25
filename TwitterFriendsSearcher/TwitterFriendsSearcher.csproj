@@ -11,7 +11,8 @@
     <RootNamespace>TwitterFriendsSearcher</RootNamespace>
     <AssemblyName>TwitterFriendsSearcher</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -43,6 +44,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\TweetSharp.2.0.7\lib\4.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.2\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapping\ApplicationBootstrapper.cs" />
+    <Compile Include="Bootstrapping\ScanningRegistry.cs" />
     <Compile Include="Core\IMakingFriendsService.cs" />
     <Compile Include="FollowAlgorithm\IncreaseFollowersService.cs" />
     <Compile Include="FollowAlgorithm\ISearchExecutor.cs" />
@@ -66,6 +72,7 @@
     <Compile Include="FollowAlgorithm\SearchCompletedEventArgs.cs" />
     <Compile Include="FollowAlgorithm\UsersByKeywordsSearcher.cs" />
     <Compile Include="Twitter\ApplicationToken.cs" />
+    <Compile Include="Twitter\TwitterAccess.cs" />
     <Compile Include="Twitter\UserToken.cs" />
     <Compile Include="Twitter\ITwitterWrapper.cs" />
     <Compile Include="Core\IUsersByKeywordsSearcher.cs" />
@@ -86,10 +93,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\TwitterFriendsSearcherForm.resx">
       <DependentUpon>TwitterFriendsSearcherForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -101,6 +110,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
