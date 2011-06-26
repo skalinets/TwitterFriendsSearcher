@@ -13,10 +13,14 @@ namespace TwitterFriendsSearcher.Bootstrapping
                      { 
                          x.AssemblyContainingType(typeof(ScanningRegistry));
                          x.WithDefaultConventions();
+
+                         x.ExcludeNamespace("TwitterFriendsSearcher.UI");
                      });
 
             SelectConstructor(() => new ApplicationToken());
             SelectConstructor(() => new UserToken());
+
+            For<ITwitterWrapper>().Use<TwitterWrapper>().OnCreation(x => x.Authenticate(new UserToken()));
 
             For<ISearchExecutor>().Use<MultipleThreadsExecutor>();
         }

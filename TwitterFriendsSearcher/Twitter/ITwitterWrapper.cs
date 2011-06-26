@@ -10,5 +10,6 @@ namespace TwitterFriendsSearcher.Twitter
         void Unfollow(int userId);
         IEnumerable<int> GetFriends(int userId);
         IEnumerable<int> FindByKeywords(string keywords);
+        void Authenticate(UserToken userToken);
     }
 }

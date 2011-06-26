@@ -47,6 +47,11 @@ namespace Test.TwitterFriendsSearcher.TestHelpers
             throw new NotImplementedException();
         }
 
+        public void Authenticate(UserToken userToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public void HasReceivedTweet(string testTweet)
         {
             Assert.AreEqual(testTweet, LastTweet);
