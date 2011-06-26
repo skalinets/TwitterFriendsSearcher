@@ -65,11 +65,13 @@
     <Compile Include="Bootstrapping\ApplicationBootstrapper.cs" />
     <Compile Include="Bootstrapping\ScanningRegistry.cs" />
     <Compile Include="Core\IMakingFriendsService.cs" />
+    <Compile Include="FollowAlgorithm\IIncreaseFollowersService.cs" />
     <Compile Include="FollowAlgorithm\IncreaseFollowersService.cs" />
     <Compile Include="FollowAlgorithm\ISearchExecutor.cs" />
     <Compile Include="FollowAlgorithm\MakingFriendsService.cs" />
     <Compile Include="FollowAlgorithm\MultipleThreadsExecutor.cs" />
     <Compile Include="FollowAlgorithm\SearchCompletedEventArgs.cs" />
+    <Compile Include="FollowAlgorithm\UserEventArgs.cs" />
     <Compile Include="FollowAlgorithm\UsersByKeywordsSearcher.cs" />
     <Compile Include="Twitter\ApplicationToken.cs" />
     <Compile Include="Twitter\TwitterAccess.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Twitter\ITwitterWrapper.cs" />
     <Compile Include="Core\IUsersByKeywordsSearcher.cs" />
     <Compile Include="Twitter\TwitterWrapper.cs" />
+    <Compile Include="UI\ITwitterFriendsSearcherView.cs" />
     <Compile Include="UI\TwitterFriendsSearcherForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +88,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\TwitterFriendsSearcherPresenter.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

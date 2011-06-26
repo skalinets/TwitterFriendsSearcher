@@ -8,7 +8,7 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
 {
     public class MakingFriendsService : IMakingFriendsService
     {
-        
+
         public ITwitterWrapper TwitterWrapper { get; private set; }
 
         public MakingFriendsService(ITwitterWrapper twitterWrapper)
@@ -16,10 +16,32 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
             TwitterWrapper = twitterWrapper;
         }
 
+        public event EventHandler<UserEventArgs> UserFollowed;
+        public event EventHandler<UserEventArgs> UserUnfollowed;
+
+        public void OnUserUnfollowed(UserEventArgs e)
+        {
+            if (UserUnfollowed != null) UserUnfollowed(this, e);
+        }
+
+        public void OnUserFollowed(UserEventArgs args)
+        {
+            if (UserFollowed != null) UserFollowed(this, args);
+        }
+
         public void MakeFriendsWith(IEnumerable<int> users)
         {
-            users.ToList().ForEach(TwitterWrapper.Follow);
-            users.ToList().ForEach(TwitterWrapper.Unfollow);
+            users.ToList().ForEach(x =>
+            {
+                TwitterWrapper.Follow(x);
+                OnUserFollowed(new UserEventArgs(x));
+            });
+
+            users.ToList().ForEach(x =>
+            {
+                TwitterWrapper.Unfollow(x);
+                OnUserUnfollowed(new UserEventArgs(x));
+            });
         }
     }
 }

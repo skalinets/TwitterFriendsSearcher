@@ -28,5 +28,37 @@ namespace Test.TwitterFriendsSearcher.FollowAlgorithm
             twitterWrapper.AssertWasCalled(x => x.Unfollow(2));
         }
 
+        [TestMethod]
+        public void should_raise_UserFollowed_when_the_user_is_followed()
+        {
+            var users = new List<int> { 1 };
+
+            var makingFriendsService = new MakingFriendsService(twitterWrapper);
+
+            var isUserFollowedRaised = false;
+
+            makingFriendsService.UserFollowed += (sender, e) => { isUserFollowedRaised = true; };
+
+            makingFriendsService.MakeFriendsWith(users);
+
+            Assert.IsTrue(isUserFollowedRaised);
+        }
+
+        [TestMethod]
+        public void should_raise_UserUnfollowed_when_the_user_is_unfollowed()
+        {
+            var users = new List<int> { 1 };
+
+            var makingFriendsService = new MakingFriendsService(twitterWrapper);
+
+            var isUserUnfollowedRaised = false;
+
+            makingFriendsService.UserUnfollowed += (sender, e) => { isUserUnfollowedRaised = true; };
+
+            makingFriendsService.MakeFriendsWith(users);
+
+            Assert.IsTrue(isUserUnfollowedRaised);
+        }
+
     }
 }
