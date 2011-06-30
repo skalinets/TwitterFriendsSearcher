@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using StructureMap;
 using TwitterFriendsSearcher.Bootstrapping;
 using TwitterFriendsSearcher.Twitter;
 using TwitterFriendsSearcher.UI;
@@ -22,10 +23,12 @@ namespace TwitterFriendsSearcher
         {
             new ApplicationBootstrapper().Bootstrap();
 
+            if(TwitterWrapper != null)
+                ObjectFactory.Inject(TwitterWrapper);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //MainForm = new TwitterFriendsSearcherForm(args.Count() > 0 ? args[0] : string.Empty);
             MainForm = new TwitterFriendsSearcherForm();
 
             Application.Run(MainForm);

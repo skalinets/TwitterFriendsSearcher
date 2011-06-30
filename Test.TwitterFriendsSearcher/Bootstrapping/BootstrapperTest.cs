@@ -16,6 +16,8 @@ namespace Test.TwitterFriendsSearcher.Bootstrapping
 
             var increaseFollowersService = ObjectFactory.GetInstance<IncreaseFollowersService>();
 
+            var searchExecutor = ObjectFactory.GetInstance<ISearchExecutor>();
+
             Assert.IsNotNull(increaseFollowersService);
         }
 
