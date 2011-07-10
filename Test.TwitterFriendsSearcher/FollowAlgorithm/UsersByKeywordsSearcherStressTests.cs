@@ -46,13 +46,13 @@ namespace Test.TwitterFriendsSearcher.FollowAlgorithm
 
             searcher.SearchCompleted += (sender, args) =>
                                             {
-                                                Interlocked.Increment(ref searchCompletedRaisedTimes);
+                                                searchCompletedRaisedTimes++;
                                                 wait.Set();
                                             };
 
             searcher.Find(Keywords());
 
-            Assert.IsTrue(wait.WaitOne(1000));
+            Assert.IsTrue(wait.WaitOne(3000));
             Assert.AreEqual(1, searchCompletedRaisedTimes);
         }
 

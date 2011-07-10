@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Test.TwitterFriendsSearcher.Shared" />
+  <xs:import schemaLocation="http://localhost:8083/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TwitterFriendsSearcher.Runner" />
+  <xs:element name="GetButtonCenterByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="buttonName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetButtonCenterByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Test.TwitterFriendsSearcher.Shared" minOccurs="0" name="GetButtonCenterByNameResult" nillable="true" type="q1:ControlCenter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTextBoxCenterByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="textBoxName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTextBoxCenterByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Test.TwitterFriendsSearcher.Shared" minOccurs="0" name="GetTextBoxCenterByNameResult" nillable="true" type="q2:ControlCenter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListBoxInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="listBoxInfoName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListBoxInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TwitterFriendsSearcher.Runner" minOccurs="0" name="GetListBoxInfoResult" nillable="true" type="q3:ListBoxInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

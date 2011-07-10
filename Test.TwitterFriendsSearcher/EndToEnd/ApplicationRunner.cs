@@ -2,13 +2,12 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
-using StructureMap;
-using Test.TwitterFriendsSearcher.TestHelpers;
+using System.Windows;
+using Test.TwitterFriendsSearcher.TwitterFriendsSearcherUiProvider;
 using TwitterFriendsSearcher;
-using TwitterFriendsSearcher.Bootstrapping;
 using TwitterFriendsSearcher.Twitter;
 using White.Core;
-using White.Core.Factory;
+using White.Core.InputDevices;
 using White.Core.UIItems;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using White.Core.UIItems.WindowItems;
@@ -19,69 +18,70 @@ namespace Test.TwitterFriendsSearcher.EndToEnd
     {
 
         private Application application;
-        private Window window;
+        private Keyboard keyboard;
+        private Mouse mouse;
+        private Process twitterFriendsSearcherProccess;
 
-        public void Launch(ITwitterWrapper twitterWrapper)
+        public void Launch()
         {
-            new Thread(() =>
-                           {
-                               Program.TwitterWrapper = twitterWrapper;
-                               Program.Main();
+            keyboard = Keyboard.Instance;
+            mouse = Mouse.Instance;
 
-                           }).Start();
+            LaunchTwitterFriendsSearcherAndHostTheService();
 
-            var currentProcess = Process.GetCurrentProcess();
-            application = Application.Attach(currentProcess.Id);
+            twitterFriendsSearcherProccess = Process.GetProcessesByName("TwitterFriendsSearcher.Runner")[0];
 
-            window = application.GetWindow("TwitterFriendsSearcher");
+            application = Application.Attach(twitterFriendsSearcherProccess.Id);
         }
 
-        public void Tweet(ITwitterWrapper twitterWrapper, string tweet)
+        private void LaunchTwitterFriendsSearcherAndHostTheService()
         {
-            new Thread(() =>
-                           {
-                               Program.TwitterWrapper = twitterWrapper;
-                               Program.Main(tweet);
-                           }).Start();
+            Process.Start(@"..\..\..\..\..\TwitterFriendsSearcher.Runner\bin\Debug\TwitterFriendsSearcher.Runner.exe");
 
-            Thread.Sleep(1000);
-
-            var currentProcess = Process.GetCurrentProcess();
-            application = Application.Attach(currentProcess.Id);
-        }
-
-        public void ReadAndDisplayRecentTweet()
-        {
-            if (Program.MainForm.InvokeRequired)
-                Program.MainForm.Invoke(new Action(() => Program.MainForm.ReadLatestTweet()));
-            else
-                Program.MainForm.ReadLatestTweet();
-        }
-
-        public void ShowsTweet(string tweet)
-        {
-            var mainWindow = application.GetWindow("TwitterFriendsSearcher");
-            var label = mainWindow.Get<Label>("lblLastTweet");
-
-            Assert.AreEqual(tweet, label.Text);
+            // give it a chance to run and host a service
+            Thread.Sleep(10000);
         }
 
         public void EnterKeywords(string keywords)
         {
-            var textBox = window.Get<TextBox>("tbKeywords");
-            textBox.Enter(keywords);
+            using (var serviceClient = new TwitterFriendsSearcherUiInfoProviderClient())
+            {
+                var center = serviceClient.GetTextBoxCenterByName("tbKeywords");
+                mouse.Click(new Point(center.X, center.Y));
+            }
+
+            keyboard.Enter(keywords);
         }
 
         public void ClickButton(string buttonName)
         {
-            var searchButton = window.Get<Button>("btnStart");
-            searchButton.Click();
+            using(var serviceClient = new TwitterFriendsSearcherUiInfoProviderClient())
+            {
+                var center = serviceClient.GetButtonCenterByName(buttonName);
+                mouse.Location = new Point(center.X, center.Y);
+                mouse.Click();
+            }
         }
 
-        public void DisplaysUserFollowed(int userId)
+        public bool DisplaysAtLeastOneFollowedUser()
         {
-            var listBox = window.Get<White.Core.UIItems.ListBoxItems.ListBox>("lbUsersFollowedAtTheMoment");
-            listBox.Items.Any(x => x.NameMatches(userId.ToString()));
+            using(var serviceClient = new TwitterFriendsSearcherUiInfoProviderClient())
+            {
+                return serviceClient.GetListBoxInfo("lbUsersFollowedAtTheMoment").Items.Length > 0;
+            }
+        }
+
+        public void StopApplication()
+        {
+            application.Kill();
+            try
+            {
+                twitterFriendsSearcherProccess.Kill();
+            }
+            catch
+            {
+            }
+
         }
     }
 }

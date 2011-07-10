@@ -12,34 +12,26 @@ namespace Test.TwitterFriendsSearcher.EndToEnd
     {
 
         private ApplicationRunner applicationRunner = new ApplicationRunner();
-        //private FakeTwitterWrapper twitterWrapper = new FakeTwitterWrapper();
+
+        [TestInitialize]
+        public void SetUp()
+        {
+            applicationRunner.Launch();
+        }
+
+        [TestCleanup]
+        public void TearDown()
+        {
+            applicationRunner.StopApplication();
+        }
 
         [TestMethod]
-        public void should_tweet_then_fetch_and_display_the_tweet()
+        public void should_display_the_user_returned_from_Twitter_when_entered_keywords_and_clicked_search()
         {
-            const string keywords = "tdd course";
-            const int userFound = 15;
-            var foundUsers = new[] { userFound };
-
-            var twitterWrapper = MockRepository.GenerateStub<ITwitterWrapper>();
-            twitterWrapper.Stub(x => x.FindByKeywords(keywords)).Return(foundUsers);
-
-            applicationRunner.Launch(twitterWrapper);
-
             applicationRunner.EnterKeywords("tdd course");
             applicationRunner.ClickButton("btnStart");
 
-            twitterWrapper.AssertWasCalled(x => x.FindByKeywords(keywords));
-
-            applicationRunner.DisplaysUserFollowed(userFound);
-
-            //applicationRunner.Tweet(twitterWrapper, testTweet);
-            //twitterWrapper.HasReceivedTweet(testTweet);
-
-            //applicationRunner.ReadAndDisplayRecentTweet();
-            //twitterWrapper.HasBeenAskedForTheLastTweet();
-
-            //applicationRunner.ShowsTweet(testTweet);
+            DelayedAssert.AreEqual(true, () => applicationRunner.DisplaysAtLeastOneFollowedUser());
         }
 
     }

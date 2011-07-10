@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0f92ff3d-3801-4314-bd59-586699eb4291" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8083" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="9a150588-f2eb-4f5c-aa82-a611bc4a1435" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd1" />
+    <MetadataFile FileName="TwitterFriendsSearcherUiInfoProvider.wsdl" MetadataType="Wsdl" ID="44aa41b0-b140-4561-aeff-156ad0bf4bda" SourceId="1" SourceUrl="http://localhost:8083/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="4fb68550-f08b-4dba-8f96-092ec0bb8dc1" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd0" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="7e835524-d49e-47ec-8894-bf5616b32fd5" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd4" />
+    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="4fdecc8c-685f-4810-b21e-fa9675d7d521" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd3" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="055aca73-c820-4e44-8187-18a1f887f1b4" SourceId="1" SourceUrl="http://localhost:8083/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="b92331cc-c214-4621-bfef-1170254bf039" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

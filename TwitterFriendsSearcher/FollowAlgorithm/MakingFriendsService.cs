@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using TwitterFriendsSearcher.Core;
 using TwitterFriendsSearcher.Twitter;
 
@@ -36,6 +37,8 @@ namespace TwitterFriendsSearcher.FollowAlgorithm
                 TwitterWrapper.Follow(x);
                 OnUserFollowed(new UserEventArgs(x));
             });
+
+            Thread.Sleep(2000);
 
             users.ToList().ForEach(x =>
             {
